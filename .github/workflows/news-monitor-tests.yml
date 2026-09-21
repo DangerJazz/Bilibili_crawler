@@ -36,6 +36,7 @@ jobs:
       - name: Smoke-test Windows launcher
         shell: cmd
         run: |
-          news_monitor\run_scheduled.bat --help
-          if errorlevel 1 exit /b 1
+          call news_monitor\run_scheduled.bat --help
+          set launcher_exit=%errorlevel%
           type news_monitor\logs\latest.log
+          exit /b %launcher_exit%

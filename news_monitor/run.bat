@@ -2,16 +2,19 @@
 setlocal
 cd /d "%~dp0"
 
-where py >nul 2>nul
-if errorlevel 1 goto try_python
-py -3 monitor.py %*
+python --version >nul 2>nul
+if not errorlevel 1 goto use_python
+py -3 --version >nul 2>nul
+if not errorlevel 1 goto use_py
+goto no_python
+
+:use_python
+python monitor.py %*
 set "exit_code=%errorlevel%"
 goto done
 
-:try_python
-where python >nul 2>nul
-if errorlevel 1 goto no_python
-python monitor.py %*
+:use_py
+py -3 monitor.py %*
 set "exit_code=%errorlevel%"
 goto done
 
