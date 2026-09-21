@@ -1,6 +1,7 @@
 @echo off
 setlocal
 cd /d "%~dp0"
+set "PYTHONUTF8=1"
 
 python --version >nul 2>nul
 if not errorlevel 1 goto use_python

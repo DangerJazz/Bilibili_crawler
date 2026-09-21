@@ -1,6 +1,7 @@
 @echo off
 setlocal
 cd /d "%~dp0"
+set "PYTHONUTF8=1"
 if not exist logs mkdir logs
 
 python --version >nul 2>nul
