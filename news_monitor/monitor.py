@@ -14,17 +14,16 @@ import os
 import random
 import sys
 import time
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlencode
 from urllib.request import Request, urlopen
-from zoneinfo import ZoneInfo
 
 
 API_URL = "https://api.bilibili.com/x/polymer/web-dynamic/v1/feed/space"
-SHANGHAI_TZ = ZoneInfo("Asia/Shanghai")
+SHANGHAI_TZ = timezone(timedelta(hours=8), name="Asia/Shanghai")
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) "
