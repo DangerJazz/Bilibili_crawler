@@ -1,0 +1,15 @@
+{
+  "users": [
+    {
+      "name": "重返未来：1999",
+      "uid": "1197454103"
+    }
+  ],
+  "options": {
+    "lookback_hours": 48,
+    "max_pages": 3,
+    "request_interval_seconds": 1.5,
+    "timeout_seconds": 20,
+    "retries": 3
+  }
+}
