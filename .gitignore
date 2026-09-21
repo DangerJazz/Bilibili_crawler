@@ -1,0 +1,7 @@
+# B站资讯监控器的本地凭证与运行产物
+news_monitor/.env
+news_monitor/output/
+news_monitor/logs/
+news_monitor/__pycache__/
+news_monitor/tests/__pycache__/
+*.py[cod]

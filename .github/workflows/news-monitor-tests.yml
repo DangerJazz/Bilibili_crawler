@@ -1,0 +1,42 @@
+name: News monitor tests
+
+on:
+  push:
+    branches:
+      - main
+      - feature/news-monitor
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Compile
+        run: python -m py_compile news_monitor/monitor.py
+      - name: Test
+        run: python -m unittest discover -s news_monitor/tests -v
+
+  windows-batch:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - name: Smoke-test Windows launcher
+        shell: cmd
+        run: |
+          call news_monitor\run_scheduled.bat --help
+          set launcher_exit=%errorlevel%
+          type news_monitor\logs\latest.log
+          exit /b %launcher_exit%
